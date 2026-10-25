@@ -20,7 +20,31 @@ pipeline:
           name: Build on Linux
           run:
             shell: bash
-            script: mvn -B -DskipTests package
+            script: "#!/bin/sh\r
+
+              \r
+
+              echo \"===== CURRENT DIRECTORY =====\"\r
+
+              pwd\r
+
+              \r
+
+              echo \"===== FILES IN WORKSPACE =====\"\r
+
+              ls -la\r
+
+              \r
+
+              echo \"===== SEARCHING FOR POM.XML =====\"\r
+
+              find /harness -maxdepth 10 -name pom.xml -print\r
+
+              \r
+
+              echo \"===== SOURCE DIRECTORY =====\"\r
+
+              ls -la /harness"
         - id: testLinux
           name: Test on Linux
           run-test:
