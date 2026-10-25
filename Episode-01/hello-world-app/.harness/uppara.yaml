@@ -45,24 +45,3 @@ pipeline:
                       java -jar target/hello-world-1.0.0.jar
                       echo ""
                       echo "=== Pipeline Success! ==="
-              - step:
-                  type: Run
-                  name: Run_2
-                  identifier: Run_2
-                  spec:
-                    shell: Sh
-                    command: |-
-                      set -e
-
-                      echo "Checking Java and Maven"
-                      java -version
-                      mvn -version
-
-                      echo "Checking source files"
-                      pwd
-                      ls -la
-
-                      echo "Building Java Application"
-                      mvn -B clean package
-
-                      echo "Build Completed"
